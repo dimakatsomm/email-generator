@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Signature</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap">
+  <script type="text/javascript" src="./assets/js/app.js"></script>
+  
+  <noscript>
+    Ensure that the browser that you using has JavaScript is enabled
+  </noscript>
+</head>
+<body>
+  <header>
+    <ul>
+      <li><h1>Email Signature Generator</h1></li>
+      <li class="clRight"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dimakatso" data-color="#FFDD00" data-emoji=""  data-font="Lato" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script></li>
+    </ul>
+  </header>
+  <main>
+    <aside>
+      <div class="signature-data">
+        <div class="signature-input">
+          <input id="name"    placeholder="Fullname" onkeyup="updateValue(this, 'outputName')"    required minlength="2"><br>
+          <input id="title"   placeholder="Title"    onkeyup="updateValue(this, 'outputTitle')"   required minlength="2"><br>
+          <input id="company" placeholder="Company"  onkeyup="updateValue(this, 'outputCompany')" required minlength="2"><br>
+          <input id="phone"   placeholder="Phone"    onkeyup="updateValue(this, 'outputPhone')"   required type="tel" minlength="10" maxlength="16"><br>    
+          <input id="email"   placeholder="Email"    onkeyup="updateEmail(this, 'outputEmail')"   required type="email"><br>    
+          <input id="website" placeholder="Website"  onkeyup="updateLink(this, 'outputWebsite')"  required type="url"><br>
+          <br>
+
+          <label for="logo">Company Logo</label>
+          <div class="drop-zone">
+            <span></span>
+            <input id="logo" type="file" onchange="updateImage(this, 'outputLogo')"  required accept="image/*">
+          </div>       
+          <label for="photo">Profile Picture</label>
+          <div class="drop-zone">   
+            <span></span> 
+            <input id="photo" type="file" onchange="updateImage(this, 'outputPhoto')" accept="image/*">
+          </div>
+          <br>
+
+          <input placeholder="Facebook"  onblur="addSocialMedia(this, 'facebook')"  type="url" ><br>
+          <input placeholder="Twitter"   onblur="addSocialMedia(this, 'twitter')"   type="url" ><br>
+          <input placeholder="Instagram" onblur="addSocialMedia(this, 'instagram')" type="url" ><br>
+          <input placeholder="LinkedIn"  onblur="addSocialMedia(this, 'linkedin')"  type="url" ><br>
+          <br>
+
+          <label for="disclaimer"><input id="disclaimer" type="checkbox" checked>Include Email disclaimer</label><br>
+        </div>
+      </div>   
+    </aside>
+    <article>
+      <div id="signatureSimple" class="signature-container">
+        <table style="background: none; margin: 0; padding: 10px 10px 0; border-width: 3px 0 0 0; border-style: solid; border-color: #232C9F; table-layout: fixed; width: 826px">
+          <tbody>
+            <tr style="padding: 0 12px 0 0;">
+              <td style="padding: 0 12px 0 0; text-align: center;">
+                <a id="photoLink" style="text-decoration: none;">
+                  <img id="outputPhoto" style="vertical-align: middle; width:180px; border-radius: 100%;" src="assets/img/avatar/avatar.png" alt="Headshot of me">
+                </a>
+              </td>
+              <td style="padding: 0 0 0 12px;">
+                <table style="background: none; border: 0px; margin: 0; padding: 0; ">
+                  <tbody>
+                    <tr>
+                      <td colspan="2" style="font-weight: bold; color: #232C9F; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">
+                        <span id="outputName">John Doe</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding-bottom: 10px; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <span id="outputTitle">Software Engineer</span>
+                        <br>
+                        <span id="outputCompany" style="font-weight: bold;">Company</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding-bottom: 10px; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <span id="outputPhone">0121234567</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding-bottom: 10px; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <a id="outputEmail" style="color: #4BAFDB; text-decoration: none; font-weight: normal; font-size: 14px;">johndoe@company.co</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td valign="top" style="padding-bottom: 10px; vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <a id="outputWebsite" style="color: #4BAFDB; text-decoration: none; font-weight: normal; font-size: 14px;">www.company.co</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td style="padding: 0 12px 0 0; text-align: center;">
+                <a id="companyLink" style="text-decoration: none;">
+                  <img id="outputLogo" style="vertical-align: middle; width:200px;" src="assets/img/avatar/company.png" alt="Headshot of me">
+                </a>
+              </td>
+            </tr>
+            <tr id="disclaimerText">
+              <td colspan="3">
+                <br>
+                <p style="font-size: xx-small; color: #333333;">CONFIDENTIAL: This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error please notify the system manager. This message contains confidential information and is intended only for the individual named. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <button class="clRight" onclick="copySignature()"><img src="assets/img/copy.png">Copy Signature</button>
+    </article>
+  </main>
+  <footer>
+    <span>Created by<a href="dimakatso.me" target="_blank">Dimakatso</a></span>
+  </footer>
+</body>
